@@ -38,6 +38,75 @@ public class Viewer extends Application {
     final DirectoryChooser dChoser = new DirectoryChooser();
     StackPane vbox;
 
+
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("window.fxml"));
+        vbox = loader.<StackPane>load();
+
+
+        Scene scene = new Scene(vbox);
+        scene.getStylesheets().add("style.css");
+        primaryStage.setScene(scene);
+
+        view.setFitHeight(vbox.getHeight());
+        view.setFitWidth(vbox.getWidth());
+        view.setPreserveRatio(true);
+
+        primaryStage.show();
+    }
+    public TextArea indicate = null;
+
+    @FXML
+    public void gonext(Event e){
+        i+=1;
+        opnImg();
+        indicate.setText(indicate.getText()+" next");
+
+    }
+    @FXML
+    public void goprev(Event e){
+        i-=1;
+        opnImg();
+        indicate.setText(indicate.getText()+" previous");
+
+    }
+    @FXML
+    public void opnFldr(Event e) {
+        dir = dChoser.showDialog(null);
+        if (dir != null) {
+            indicate.setText(indicate.getText()+dir.getAbsolutePath());
+            indicate.setText(indicate.getText()+"\n======================");
+            i=0;
+            opnImg();
+            for (File f: dir.listFiles()) {
+                indicate.setText(indicate.getText() + "\n" + f.getName());
+            }
+
+
+            indicate.setText(indicate.getText()+"\n======================\n");
+        } else {
+            indicate.setText(indicate.getText()+null);
+
+        }
+    }
+    public void opnImg(){
+        if(dir!=null) {
+            if (i < 0) {
+                i += dir.listFiles().length;
+
+            }
+            if (i >= dir.listFiles().length) {
+                i -= dir.listFiles().length;
+            }
+            if(dir.listFiles()[i].getName().length()>3 && formats.contains(dir.listFiles()[i].getName().substring(dir.listFiles()[i].getName().length()-3,dir.listFiles()[i].getName().length()).toUpperCase())) {
+                Image img = new Image("file:///"+dir.listFiles()[i].getPath());
+                view.setImage(img);
+            }
+        }
+
     }
 
 
