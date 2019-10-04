@@ -1,0 +1,19 @@
+.buttons{
+
+    -fx-stroke-line-cap: round;
+    -fx-stroke-width: 10;
+    -fx-stroke-type: centered;
+    -fx-cursor: hand;
+    -fx-stroke-line-join: round;
+    -fx-stroke: #336789;
+    -fx-fill: #ffffffff;
+    -fx-opacity: 0.1;
+
+
+}
+.buttons:hover {
+    -fx-padding: 10;
+    -fx-fill: #ffffffff;
+    -fx-stroke: #336789;
+    -fx-opacity: 0.5;
+}

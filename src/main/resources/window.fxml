@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.control.TextArea?>
+
+
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.image.ImageView?>
+<StackPane fx:controller="Viewer" xmlns:fx="http://javafx.com/fxml">
+
+        <ImageView fx:id="view"/>
+
+    <HBox  prefHeight="100" prefWidth="500" spacing="20" alignment="CENTER">
+        <Polygon points="50,0, 1,80, 50,160" onMouseClicked="#goprev" styleClass="buttons" fx:id="buttonl" smooth="true"/>
+
+        <VBox alignment="CENTER">
+            <Button text="select folder" onMouseClicked="#opnFldr"/>
+
+            <TextArea style="-fx-wrap-text: true" id="indicate" fx:id="indicate" prefWidth="300" prefHeight="300"/>
+        </VBox>
+
+        <Polygon points="1,0, 50,80, 1,160" onMouseClicked="#gonext" styleClass="buttons" fx:id="buttonr" smooth="true"/>
+
+
+    </HBox>
+</StackPane>
